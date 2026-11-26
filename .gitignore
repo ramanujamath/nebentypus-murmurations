@@ -1,0 +1,14 @@
+# Generated data (regenerate with code/hurwitz_sieve.py)
+*.npy
+
+# Python
+__pycache__/
+*.pyc
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
