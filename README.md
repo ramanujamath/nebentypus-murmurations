@@ -62,6 +62,8 @@ The analytic results depend on several sign and normalization conventions that d
 | `check_family_sum.py`, `check_family_sum_conj.py` | the closed-form family sums (Proposition 7) |
 | `check_proof_prime.py`, `check_proof_squarefree.py` | the individual steps of the proofs of Theorems 3 and 12 |
 | `check_unconjugated_spikes.py` | the special residue classes in Theorem 2 |
+| `check_single_character.py` | the Kloosterman-sum factorization behind the single-character formula (6) |
+| `secondary_term_prime.py` | the smooth secondary term discussed in Section 6.1 |
 
 ## Reproducing the results
 

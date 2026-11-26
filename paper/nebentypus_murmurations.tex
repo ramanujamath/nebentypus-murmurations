@@ -448,13 +448,61 @@ At prime level the main term came from the level-one Kronecker--Hurwitz relation
 \end{remark}
 
 \section{Further questions}\label{sec:questions}
-\begin{enumerate}
-\item Make Remark~\ref{rem:zeta2} rigorous, deriving the natural averages from the harmonic ones by removing the weights as in \cite{ILS}, and find the secondary terms of size $q^{-3/2}$ in Theorem~\ref{thm:natural}.
-\item Improve the error term in Theorem~\ref{thm:compositenat} to $N^{-3/2+\varepsilon}$, as at prime level.
-\item Treat non-squarefree levels and characters of non-maximal conductor, where $S_k(N,\chi)$ itself contains oldforms.
-\item Restrict to characters of fixed order. For quadratic $\chi$ the family is self-dual, and the main term of Theorem~\ref{thm:main} is already present before any average over $\chi$. How does the density change for cubic or higher-order characters?
-\item Study the transition at $p\asymp N^2$, where the Kloosterman moduli $c=Nr$ with $r\ge2$ begin to contribute.
-\end{enumerate}
+
+We list the questions that the results and numerics suggest most directly. For each one we explain where the difficulty lies and, when we have one, what we expect the answer to be.
+
+\subsection{Secondary terms at prime level}
+Table~\ref{tab:err} shows that the error $E(q,p)$ in Theorem~\ref{thm:natural} is of exact order $q^{-3/2}$. Further experiments show that it has structure. We binned $q^{3/2}E(q,p)$ by $y=p/q$ into $15$ intervals of length $0.2$ for $q=401,601,809$. The binned means give the same curve for all three levels: for both $k=2$ and $k=3$, the correlation between the curves for different $q$ is between $0.94$ and $0.97$. The curve has mean close to $0$ and amplitude about $10$--$15$ for $k=2$ and about $5$ for $k=3$. Around it, individual primes $p$ fluctuate by a comparable amount. This suggests an expansion
+\[
+\bigl\langle\eps_f\,\ov{\lambda_f(p)}\bigr\rangle=\frac{12}{\pi\sqrt q}\Bigl(1+\frac1p\Bigr)J_{k-1}\bigl(4\pi\sqrt y\bigr)+\frac{M_k^{(2)}(y)}{q^{3/2}}+\frac{R_k(q,p)}{q^{3/2}}+o\bigl(q^{-3/2}\bigr),
+\]
+with a smooth second-order density $M_k^{(2)}$ and an arithmetic fluctuation $R_k(q,p)$ of mean zero.
+
+The terms that the proof of Theorem~\ref{thm:natural} only bounds are natural candidates for $M_k^{(2)}$. These are the values $t\equiv0\pmod q$ excluded in Proposition~\ref{prop:exact}, the Eisenstein term $\delta_{2\mid k}$, the terms $G_k(1)$ and $\min(p,q)^{k-1}G_k(p)$, and the $O(1/q)$ corrections in the normalization. Each of them depends smoothly on $y$. These terms must partly cancel, however. For $k=2$ the Eisenstein term alone would contribute $+24\sqrt y\,q^{-3/2}$, which would give a positive mean that is not observed. The fluctuation $R_k$ presumably comes from the traces $\Tr(T_{pq}\mid S_{m+2}(\SL))$ of the higher Chebyshev modes, which depend on $p$ arithmetically. Determining $M_k^{(2)}$ explicitly, and showing that $R_k$ averages to zero over $p$ in short intervals, would give a two-term asymptotic.
+
+\subsection{From harmonic to natural weights}
+Remark~\ref{rem:zeta2} explains the factor $1/\zeta^{(N)}(2)$ through the Petersson formula. A rigorous version would proceed as in \cite{ILS}. Up to local factors at the primes dividing $N$, one writes $\omega_f^{-1}$ in terms of $L(1,\mathrm{Ad}f)$. One approximates $L(1,\mathrm{Ad}f)$ by a short Dirichlet polynomial $\sum_{n\le X}\lambda_f(n^2)\bar\chi(n)n^{-1}$, outside an exceptional set of forms controlled by a zero-density estimate for the adjoint $L$-functions. Then one applies the Petersson formula to each term. The modulus $c=Nn$ should then produce the Ramanujan sum $S(0,N;Nn)=\varphi(N)\mu(n)$, and with it the factor $\sum_{(n,N)=1}\mu(n)n^{-2}$. Such a proof would be less precise than Theorems~\ref{thm:natural} and~\ref{thm:compositenat}. Its advantage is flexibility: it applies whenever the harmonic average can be computed. Examples are $\eps_f\ov{\lambda_f(m)}$ for composite $m$, or smooth averages over $p$, where no analogue of Proposition~\ref{prop:exact} is available.
+
+\subsection{The error term at composite level}
+At prime level the error is $O(q^{-3/2+\varepsilon})$, but Theorem~\ref{thm:compositenat} only gives $O(N^{-1+\varepsilon})$. The loss has two sources. The expansion of $g(t)$ into characters has coefficients of size $\sqrt\ell/(\ell-1)$ at each prime. And each trace $\Tr(T_n\mid S_K(N,\psi))$ is bounded individually. The second bound is wasteful. The coefficients $B_\psi$ contain the Gauss sums $\tau(\bar\psi_\ell)$, so by \eqref{eq:rootN} the sum $\sum_\psi B_\psi\Tr(T_n\mid S_K(N,\psi))$ is itself a root-number-weighted average, of the kind studied in this paper, over spaces of lower weight. We expect it to cancel. The numerics support this. For $N=3\ell$ the normalized error $N|E|/(1+p/N)$ falls from $2.7$ at $N=159$ to $0.75$ at $N=879$, which is consistent with a true error of size $N^{-3/2}$. We conjecture that Theorem~\ref{thm:compositenat} holds with error $O(N^{-3/2+\varepsilon}(1+p/N))$.
+
+\subsection{General levels and conductors}
+There are two distinct extensions.
+
+\emph{Primitive characters modulo arbitrary $N$.} Atkin and Li \cite{AL} determine the pseudo-eigenvalue at every prime power $\ell^\alpha\parallel N$ at which $\chi$ has full conductor $\ell^\alpha$. We therefore expect \eqref{eq:rootN} to hold whenever $\chi$ is primitive modulo $N$, for $N\not\equiv2\pmod4$. The main term in the proof of Theorem~\ref{thm:compositeh} uses only primitivity and $\tau(\chi)\tau(\bar\chi)=\chi(-1)N$, so the harmonic result should extend with little change. The natural result needs more work. When $\ell^2\mid N$, conductor indices divisible by $\ell$ appear in the trace formula, and the elliptic local factors are no longer simply $\psi(t)$.
+
+\emph{Characters of smaller conductor.} If $\mathrm{cond}(\chi)<N$, then $S_k(N,\chi)$ contains oldforms. These must be removed, for instance by inverting the trace formula over divisors of $N$. A more serious problem appears at primes with $\ell^2\mid N$ where $\chi_\ell$ is not of full conductor. There the local representation can be supercuspidal or a ramified principal series, $a_f(\ell)$ can vanish, and Lemma~\ref{lem:root} has no analogue. The local root numbers are then epsilon factors of the local representations, and averaging over them resembles the depth aspect of \cite{Tom}. It would be interesting to understand how the average over characters studied here interacts with the averaging over local representations in \cite{Tom}.
+
+\subsection{Characters of fixed order}
+For a single character the proof of Theorem~\ref{thm:main} gives an exact formula. Let $\chi\in\cX_k(q)$ and $(r,q)=1$. Twisted multiplicativity of Kloosterman sums, together with $\sum_d\chi(d)\e(a\bar d/q)=\chi(a)\tau(\bar\chi)$, gives
+\[
+S_\chi(p,q;qr)=\chi(p\bar r)\,\tau(\bar\chi)\,S(p\bar q,1;r).
+\]
+We checked this identity numerically. Inserting it into \eqref{eq:pet}, the Gauss sums cancel exactly, and
+\begin{equation}\label{eq:single}
+\sum_{f\in\cB_k(q,\chi)}\omega_f\,\eps_f\ov{\lambda_f(p)}=\frac{2\pi}{\sqrt q}\sum_{\substack{r\ge1\\(r,q)=1}}\bar\chi(r)\,\frac{S(p\bar q,1;r)}{r}\,J_{k-1}\Bigl(\frac{4\pi}{r}\sqrt{\frac pq}\Bigr)+\bigl(\text{terms with }q\mid r\bigr).
+\end{equation}
+In this language Theorem~\ref{thm:main} says that the average of $\bar\chi(r)$ over $\cX_k(q)$ kills every $r\not\equiv\pm1\pmod q$, so only $r=1$ survives.
+
+For a single character the terms $r\ge2$ in \eqref{eq:single} are as large as the term $r=1$. Consider therefore families of characters of a fixed order $d$, averaged over prime levels $q\equiv1\pmod d$ with $p/q\approx y$. We expect a density of the form
+\[
+2\pi J_{k-1}(4\pi\sqrt y)+2\pi\sum_{r\ge2}\frac{\kappa_d(r;p)}{r}\,J_{k-1}\bigl(4\pi\sqrt y/r\bigr),
+\]
+where $\kappa_d(r;p)$ is the average of $\bar\chi_q(r)S(p\bar q,1;r)$ over the family.
+
+\emph{Quadratic $\chi$.} Here the individual forms are still not self-dual. The relation $\ov{a_f(p)}=\chi(p)a_f(p)$ shows that $\bar f=f\otimes\chi$, which is in general a different form; only the space $S_k(q,\chi)$ is closed under $f\mapsto\bar f$. By quadratic reciprocity, $\chi_q(r)=(r/q)$ depends only on $q\bmod4r$. The Kloosterman sum $S(p\bar q,1;r)$ depends only on $p$ and $q$ modulo $r$. So $\kappa_2(r;p)$ is an explicit local density, which can be computed from the distribution of primes $q$ in residue classes modulo $4r$, and it depends on $p\bmod r$. The resulting murmuration density is genuinely arithmetic, and it fluctuates with $p$ even after scaling.
+
+\emph{Cubic $\chi$.} Similarly, $\chi_q(r)$ is a cubic residue symbol, and cubic reciprocity in $\mathbb Z[\omega]$ expresses its average in terms of residue classes of primary primes. Because the Gauss sums cancel in \eqref{eq:single}, no information on the distribution of cubic Gauss sums is needed.
+
+Computing $\kappa_d$ explicitly, and comparing the resulting densities with Zubrilina's for trivial character, seems a natural next step.
+
+\subsection{Beyond the Petersson range}
+For $p\asymp N^2$ the argument of $J_{k-1}(4\pi\sqrt{p/N}/r)$ is $\asymp\sqrt N/r$, and all moduli $c=Nr$ with $r\ll\sqrt N$ contribute at comparable size, so the range $p\le N^{2}$ in Theorem~\ref{thm:compositeh} cannot be extended by this method. The main terms of Theorems~\ref{thm:natural} and~\ref{thm:compositenat} also stop dominating, at $p\asymp q^{9/5}$ and $p\asymp N^{7/5}$ respectively. What is the true size of $\langle\eps_f\ov{\lambda_f(p)}\rangle$ for $N^2\le p\le N^{3}$? A natural guess is square-root cancellation over the family, which has about $N^2$ members, giving size about $N^{-1}$. This would mean that the Bessel law stops at $p\asymp N^2$. Cardi \cite{Car} finds a pointwise range of cubic size for trivial character, which suggests checking whether an analogous threshold exists here.
+
+\subsection{Other families and statistics}
+\emph{Maass forms with nebentypus.} The Kuznetsov formula has the same Kloosterman sums $S_\chi(m,n;c)$ as \eqref{eq:pet}. So the cancellation at the modulus $c=N$ should give a main term equal to the Kuznetsov transform of the test function, evaluated at $4\pi\sqrt{p/N}$, at each level. Lowry-Duda \cite{LD} points out obstacles to Maass murmurations at general level with existing methods. Averaging over characters may avoid some of them.
+
+\emph{Low-lying zeros.} Murmurations are closely related to lower-order terms in the one-level density of low-lying zeros, through the explicit formula. For the non-self-dual families studied here one expects unitary symmetry. Because the correlation between $\eps_f$ and $\ov{\lambda_f(p)}$ is so simple, it may be possible to compute the lower-order terms of the one-level density of these families explicitly.
 
 \begin{thebibliography}{99}
 \bibitem{AL} A.~O.~L.~Atkin and W.-C.~W.~Li, Twists of newforms and pseudo-eigenvalues of $W$-operators, \emph{Invent. Math.} \textbf{48} (1978), 221--243.
